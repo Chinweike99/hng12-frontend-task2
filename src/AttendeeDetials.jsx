@@ -2,30 +2,15 @@ import { useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useDropzone } from "react-dropzone";
 
-interface AttendeeDetailsProps {
-  formData: {
-    name: string;
-    email: string;
-    avatarUrl: string;
-    specialRequest: string;
-  };
-  updateFormData: (data: Partial<typeof formData>) => void;
-  onNext: () => void;
-  onBack: () => void;
-}
+import { useState, useCallback } from "react";
 
-const AttendeeDetails = ({
-  formData,
-  updateFormData,
-  onNext,
-  onBack,
-}: AttendeeDetailsProps) => {
+const AttendeeDetails = ({ formData, updateFormData, onNext, onBack }) => {
   const [errors, setErrors] = useState({
     name: "",
     email: "",
   });
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
+  const onDrop = useCallback((acceptedFiles) => {
     // In a real app, you would upload the file to your server or a service like Cloudinary
     // For this demo, we'll create a fake URL
     const file = acceptedFiles[0];
@@ -34,7 +19,6 @@ const AttendeeDetails = ({
       updateFormData({ avatarUrl: url });
     }
   }, []);
-
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: {

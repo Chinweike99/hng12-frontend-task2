@@ -1,18 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-interface TicketConfirmationProps {
-  formData: {
-    name: string;
-    email: string;
-    avatarUrl: string;
-    specialRequest: string;
-    ticketType: string;
-  };
-  onBack: () => void;
-}
 
-const TicketConfirmation = ({ formData, onBack }: TicketConfirmationProps) => {
+const TicketConfirmation = ({ formData, onBack }) => {
   const [barcode, setBarcode] = useState("");
 
   useEffect(() => {
@@ -21,6 +11,7 @@ const TicketConfirmation = ({ formData, onBack }: TicketConfirmationProps) => {
     setBarcode(randomBarcode);
   }, []);
 
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
